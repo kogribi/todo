@@ -7,6 +7,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Sveiks, Laravel!</h1>
+    <h1>Kapēc tu te esi?</h1>
 </body>
 </html>
