@@ -15,4 +15,18 @@ class ToDoController extends Controller
     public function show(ToDo $todo) {
         return view("todos.show", compact("todo"));
     }
+    public function create(){
+        $todos = ToDo::all();
+        return view("todos.create", compact("todos"));
+    }
+    public function store(Request $request){
+        $validated = $request->validate([
+            "content" => "required|max:255"
+          ]);
+        ToDo::create([
+            "content" => $validated["content"],
+            "completed" => false
+          ]);
+            return redirect("/todos");
+    }
 }
