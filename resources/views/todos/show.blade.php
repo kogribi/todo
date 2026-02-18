@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:title>
-     welcome
+      {{ $todo->content }}
     </x-slot:title>
-    <h1>Svieks, Laravel!</h1>
+    <h1>{{ $todo->content }}</h1>
   </x-layout>
