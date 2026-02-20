@@ -42,4 +42,8 @@ class ToDoController extends Controller
           $todo->save();
           return redirect("/todos/$todo->id");
     }
+    public function destroy(ToDo $todo){
+        $todo->delete();
+        return redirect("/todos");
+    }
 }

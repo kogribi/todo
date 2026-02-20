@@ -28,6 +28,8 @@ Route::get('/todos/{todo}/edit', [ToDoController::class, 'edit']);
 
 Route::put('/todos/{todo}', [ToDoController::class, 'update']);
 
+Route::delete('/todos/{todo}', [ToDoController::class, 'destroy']);
+
 
 
 Route::get('/diaries', [DiaryController::class, 'index']);
@@ -41,3 +43,5 @@ Route::post('/diaries', [DiaryController::class, 'store']);
 Route::get('/diaries/{diary}/edit', [DiaryController::class, 'edit']);
 
 Route::put('/diaries/{diary}', [DiaryController::class, 'update']);
+
+Route::delete('/diaries/{diary}', [DiaryController::class, 'destroy']);
