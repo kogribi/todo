@@ -29,4 +29,17 @@ class ToDoController extends Controller
           ]);
             return redirect("/todos");
     }
+    public function edit(ToDo $todo){
+        return view("todos.edit", compact("todo"));
+    }
+    public function update(Request $request, ToDo $todo){
+        $validated = $request->validate([
+            "completed" => ["boolean"],
+            "content" => ["required", "max:255"]
+          ]); 
+          $todo->content = $validated["content"];
+          $todo->completed = $validated["completed"];
+          $todo->save();
+          return redirect("/todos/$todo->id");
+    }
 }
