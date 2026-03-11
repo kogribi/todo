@@ -9,6 +9,16 @@
         @error("content")
             <p>{{ $message }}</p>
         @enderror
+        <label>
+        <select name="priority">
+            <option value="low">low</option>
+            <option value="medium">medium</option>
+            <option value="high">high</option>
+        </select>
+        </label>
+        @error("priority")
+        <p>{{ $message }}</p>
+        @enderror
         <button>Saglabāt</button>
     </form>
   </x-layout>
