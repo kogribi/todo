@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class ToDo extends Model
 {
     use HasFactory;
-    protected $fillable = ["content", "completed", "priority"];
+    protected $fillable = ["content", "completed", "priority", "user_id"];
 }

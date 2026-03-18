@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string("title", length: 100);
             $table->text("content");
             $table->date("date")->useCurrent();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

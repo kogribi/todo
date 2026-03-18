@@ -7,8 +7,13 @@ use Illuminate\Http\Request;
 
 class ToDoController extends Controller
 {
+    public function __construct()
+    {
+    $this->authorizeResource(\App\Models\ToDo::class, 'todo');
+    }
+
     public function index(){
-        $todos = ToDo::all();
+        $todos = ToDo::where('user_id', auth()->id())->get();;
         return view("todos.index", compact("todos"));
 
     }
@@ -16,8 +21,7 @@ class ToDoController extends Controller
         return view("todos.show", compact("todo"));
     }
     public function create(){
-        $todos = ToDo::all();
-        return view("todos.create", compact("todos"));
+        return view("todos.create");
     }
     public function store(Request $request){
         $validated = $request->validate([
@@ -27,13 +31,13 @@ class ToDoController extends Controller
         ToDo::create([
             "content" => $validated["content"],
             "completed" => false,
-            "priority" =>$validated["priority"]
+            "priority" =>$validated["priority"],
+            'user_id' => auth()->id()
           ]);
             return redirect("/todos");
     }
     public function edit(ToDo $todo){
-        $todos = ToDo::all();
-        return view("todos.edit", compact("todo", "todos"));
+        return view("todos.edit", compact("todo"));
     }
     public function update(Request $request, ToDo $todo){
         $validated = $request->validate([

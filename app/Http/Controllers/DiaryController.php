@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class DiaryController extends Controller
 {
+
+    public function __construct()
+    {
+    $this->authorizeResource(\App\Models\Diary::class, 'diary');
+    }
+
     public function index(){
         $diaries = Diary::all();
         return view("diaries.index", compact("diaries"));
@@ -29,7 +35,8 @@ class DiaryController extends Controller
         Diary::create([
             "title" => $validated["title"],
             "content" => $validated["content"],
-            "date" => $validated["date"]
+            "date" => $validated["date"],
+            'user_id' => auth()->id()
           ]);
             return redirect("/diaries");
     }
