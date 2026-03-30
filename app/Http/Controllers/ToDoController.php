@@ -13,7 +13,7 @@ class ToDoController extends Controller
     }
 
     public function index(){
-        $todos = ToDo::where('user_id', auth()->id())->get();;
+        $todos = ToDo::where('user_id', auth()->id())->get();
         return view("todos.index", compact("todos"));
 
     }

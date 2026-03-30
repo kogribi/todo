@@ -14,7 +14,7 @@ class DiaryController extends Controller
     }
 
     public function index(){
-        $diaries = Diary::all();
+        $diaries = Diary::where('user_id', auth()->id())->get();;
         return view("diaries.index", compact("diaries"));
 
     }
